@@ -1,4 +1,4 @@
-import type { MetaFunction, LoaderFunction } from "remix";
+import { LoaderFunction, Form } from "remix";
 import { useLoaderData, json, Link } from "remix";
 import { supabase } from "../../db";
 
@@ -34,6 +34,12 @@ export default function MangaIndex() {
                 <Link to={`/mangas/${manga.id}`}>{manga.title}</Link>
               </td>
               <td>{manga.description}</td>
+              <td>
+                <Form method="post" action="/mangas/star">
+                  <input type="hidden" name="id" value={manga.id} />
+                  <button>star</button>
+                </Form>
+              </td>
             </tr>
           ))}
         </tbody>

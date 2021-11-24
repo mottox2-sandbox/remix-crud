@@ -1,13 +1,6 @@
-import { MetaFunction, LoaderFunction, ActionFunction, redirect } from "remix";
-import { useLoaderData, json, Form } from "remix";
+import { ActionFunction, redirect } from "remix";
+import { json, Form } from "remix";
 import { supabase } from "../../db";
-
-type IndexData = {
-  id: number;
-  created_at: string;
-  title: string;
-  description: string;
-}[];
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
